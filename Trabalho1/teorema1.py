@@ -1,15 +1,12 @@
 import sys
 import math
+import time
+import random
 
-
-def checa_divisao(x, y, n):
-	a = pow(x,n)
-	b = pow(y,n)
-	c = a - b
-	
-	quociente = c/(x-y)
-
-	return quociente
+def quociente(x,y,k):
+	if k == 1:
+		return 1
+	return x^(k-1) + (y * quociente(x,y,k-1))
 
 print "\nTeorema 1: pow(x, n) - pow(y, n) eh divisivel por x - y para quaisquer x e y inteiros e todos valores de n inteiros e maiores do que zero.\n"
 
@@ -17,20 +14,36 @@ print "Teorema do caso base: k = 1, x - y eh divisivel por x - y para quaisquer 
 x = int(input(" x: "))
 y = int(input(" y: "))
 
-quociente = checa_divisao(x, y, 1)
-print "q[1] = ", quociente
+q = quociente(x, y, 1)
+print "q[1] = ", q
 
 print "\nTeorema do passo indutivo: assumindo que para um k fixo, pow(x, k) - pow(y, k) = q[k] * (x - y), onde q[k] eh um inteiro, podemos mostrar que pow(x, k+1) - pow(y, k+1) = q[k+1] * (x - y)"
 x = int(input(" x: "))
 y = int(input(" y: "))
 n = int(input(" n: "))
 
-quociente = checa_divisao(x, y, n)
+q = quociente(x, y, n)
 
-print "q[",n,"] =",quociente
+print "q[%d] = %d" % (n,q)
 
-quociente = checa_divisao(x, y, n + 1)
+print "\nCalculo de quantas execucoes acontecem por segundo. Para este calculo vamos usar valores aleatorios para x, y e k, entre 1 e 100.\n"
 
-print "q[",n,"+ 1] =", quociente
+input()
 
-print "\n'Se vale para k, vale para k+1'. O teorema eh verdadeiro pois q[k+1] eh um inteiro assim como q[k], logo pow(x, k) - pow(y, k) eh divisivel por x - y para qualquer valor de k."
+random.seed()
+t = 5
+quantidadePorLoop = 0
+inicio = time.time()
+while(time.time() - inicio < t):
+	x = random.randint(1,100)
+	y = random.randint(1,100)
+	n = random.randint(1,100)
+
+	quantidadePorLoop = quantidadePorLoop + 1
+	q = quociente(x, y, n)
+	print "q[%d] = %d" % (n,q)
+
+fim = time.time()
+tempoExecucao = fim - inicio
+
+print "\nExecucoes: %d\nTempo: %.8f segundos\nExecucoes por segundo: %.4f\n" % (quantidadePorLoop, tempoExecucao, quantidadePorLoop/tempoExecucao)
