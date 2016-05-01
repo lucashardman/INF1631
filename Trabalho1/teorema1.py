@@ -14,7 +14,7 @@ print "Teorema do caso base: k = 1, x - y eh divisivel por x - y para quaisquer 
 x = int(input(" x: "))
 y = int(input(" y: "))
 
-q = quociente(x, y, 1)
+q = (pow(x, 1) - pow(y, 1))/(x - y)
 print "q[1] = ", q
 
 print "\nTeorema do passo indutivo: assumindo que para um k fixo, pow(x, k) - pow(y, k) = q[k] * (x - y), onde q[k] eh um inteiro, podemos mostrar que pow(x, k+1) - pow(y, k+1) = q[k+1] * (x - y)"

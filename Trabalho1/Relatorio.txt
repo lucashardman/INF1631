@@ -1,0 +1,45 @@
+Relatorio:
+
+************* Exercicio 1 *************
+
+a) Escreva o algoritmo resultante da prova acima
+
+Como vimos no passo indutivos, xˆ(k + 1) - yˆ(k + 1) = (xˆk + y * q[k]) * (x - y) = q[k+1] * (x - y)
+Cortando (x - y) ficamos com (xˆk + y * q[k]) = q[k+1], que equivale a q[k] = xˆ(k - 1) + y * q[k-1]
+
+Transformando a formula para algoritmo:
+
+inicio funcao quociente(x,y,k)
+
+	se k == 1:
+		entao returna 1
+	returna x^(k-1) + (y * quociente(x,y,k-1))
+
+fim funcao
+
+onde o comando "returna x^(k-1) + (y * quociente(x,y,k-1))" corresponde a formula "q[k] = xˆ(k - 1) + y * q[k-1]", 
+que é chamada recursivamente.
+
+b) Implemente este algoritmo e teste para vários valores de x, y, e k.
+
+def quociente(x,y,k):
+	if k == 1:
+		return 1
+	return x^(k-1) + (y * quociente(x,y,k-1))
+
+No programa teorema1.py primeiro é feito o caso base: q = (pow(x, 1) - pow(y, 1))/(x - y) = 1
+
+Depois o usuario da valores para x, y e k para ver que qualquer valor que ele escolher, o
+quociente será um valor inteiro, indicando a divisibilidade de (xˆk - yˆk) por (x - y)
+
+Por fim, o programa faz um loop de duração de 5 segundos onde são gerados varios valores aleatorios
+entre 1 e 100 para calcular quantas execucuções por segundo são feitas em média. Em um teste foram
+gerados estes valores:
+
+Execucoes: 57346
+Tempo: 5.00004292 segundos
+Execucoes por segundo: 11469.1016
+
+************* Exercicio 2 *************
+
+************* Exercicio 3 *************
