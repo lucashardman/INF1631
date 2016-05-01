@@ -1,4 +1,8 @@
-Relatorio:
+************* Relatorio *************
+
+Alunos:
+Stephanie Fay
+Lucas Hardman
 
 ************* Exercicio 1 *************
 
@@ -63,6 +67,6 @@ Teorema do passo indutivo:
 	Hipótese indutiva: assumimos que o teorema 3 é válido para um k qualquer.
 	Logo, se o teorema é válido para k, ele também é valido para k + 1.
 	Ou seja, n = 2ˆ(k+1),
-			 r = 2ˆ(k+1)-1.
-			 j = 2ˆ(k+1-1) = 2ˆk.
+		 r = 2ˆ(k+1)-1,
+		 j = 2ˆ(k+1-1) = 2ˆk.
 	
