@@ -43,3 +43,26 @@ Execucoes por segundo: 11469.1016
 ************* Exercicio 2 *************
 
 ************* Exercicio 3 *************
+
+Teorema 3: Sabe-se construir 2^k − 1 rodadas de 2ˆ(k − 1) jogos onde cada equipe enfrenta uma
+equipe diferente em cada rodada.
+
+a) Apresente a prova por indução matemática no parâmetro k do Teorema 3
+
+O número de equipes é n = 2ˆk.
+O número de rodadas é r = 2ˆk-1.
+O número de jogos é j = 2ˆ(k-1). 
+
+Teorema do caso base: k = 1
+	n = 2ˆ1 = 2.
+	r = 2ˆ1 - 1 = 2 - 1 = 1.
+	j = 2ˆ(1 - 1) = 2ˆ0 = 1.
+	Ou seja, o caso base são duas equipes jogando uma rodada de um jogo.
+
+Teorema do passo indutivo:
+	Hipótese indutiva: assumimos que o teorema 3 é válido para um k qualquer.
+	Logo, se o teorema é válido para k, ele também é valido para k + 1.
+	Ou seja, n = 2ˆ(k+1),
+			 r = 2ˆ(k+1)-1.
+			 j = 2ˆ(k+1-1) = 2ˆk.
+	
