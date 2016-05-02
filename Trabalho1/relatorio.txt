@@ -162,29 +162,29 @@ Teorema do passo indutivo:
 b) Apresente o algoritmo correspondente à prova do Teorema 3 apresentada e a sua respectiva
 implementação.
 
-	funcao rodadas(k, times)
-		se times é nulo
-			t = 1
-			então enquanto t <= 2ˆk
-				times recebe t
-				t++
+	i = 1
+	se k = 1
+		retorna i, i+1
+	t1 = geraTorneio(k-1, i)
+	t2 = geraTorneio(k-1, 2**(k-1)+i)
 
-		se k == 1 #fim da recursao
-			jogo recebe a dupla times[0] e times[1]
-			funcao retorna jogo
+	enquanto t2
+		t = t1[posicao] + t2[posicao]
 
-		loop = 0
-		enquanto loop <= (2ˆk)/2
-			grupoA recebe times(loop)
-			loop++
-		enquanto loop <=2ˆk
-			grupoB recebe times(loop)
-			loop++
-
+	enquanto tamanho < lenght(times)
+		enquanto index < lenght(times)
+			index1 = index
+			index2 = (index+tamanho)%lenght
+			jogo = times[index1],times[index2]
+			rodada += jogo
+		t += rodada
+	retorna t
+	
 		
 
 c) Teste o algoritmo para valores de k. Qual o maior valor para o qual o seu algoritmo gera as
 rodadas?
 
+	13 rodadas.
 
 
