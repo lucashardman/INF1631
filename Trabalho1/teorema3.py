@@ -1,9 +1,8 @@
-def tournament(k, start = 1):
-    # Caso base
+def geraTorneio(k, start = 1):
     if k == 1:
         return [[(start, start+1)]]
-    t1 = tournament(k-1, start)
-    t2 = tournament(k-1, 2**(k-1)+start)
+    t1 = geraTorneio(k-1, start)
+    t2 = geraTorneio(k-1, 2**(k-1)+start)
     t = []
     for i in range(len(t1)):
         t.append(t1[i] + t2[i])
@@ -19,7 +18,7 @@ def tournament(k, start = 1):
         t.append(round)
     return t
     
-def print_tournament(t):
+def printJogos(t):
     for round, games in enumerate(t):
         print("		Round #%02d" % (round+1))
         for game, teams in enumerate(games):
@@ -33,8 +32,8 @@ if __name__ == '__main__':
     EXEC_MAX = 5
 
     print("	Caso Base (k=1)")
-    resultado=tournament(1)
-    print_tournament(resultado)
+    resultado=geraTorneio(1)
+    printJogos(resultado)
 
     print("	Passo Indutivo (k>1)")
     k = int(input(" k: "))
@@ -43,11 +42,11 @@ if __name__ == '__main__':
     execs = 0
     while not (execs > EXEC_MAX and time() - start < TIME_MAX):
         execs += 1
-        resultado = tournament(k)
+        resultado = geraTorneio(k)
     end = time()
     tempoTotal = end - start
 
-    print_tournament(resultado)
+    printJogos(resultado)
     print (" Execuções: %d" % execs)
     print (" Tempo: %.3fs" % tempoTotal)
     print (" Tempo por Execução: %.6fms" % (1000*tempoTotal/execs))
