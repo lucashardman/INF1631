@@ -1,0 +1,110 @@
+************* Relatorio *************
+
+Alunos:
+Stephanie Fay
+Lucas Hardman
+
+************* Exercicio 1 *************
+
+a) Escreva o algoritmo resultante da prova acima
+
+Como vimos no passo indutivos, xˆ(k + 1) - yˆ(k + 1) = (xˆk + y * q[k]) * (x - y) = q[k+1] * (x - y)
+Cortando (x - y) ficamos com (xˆk + y * q[k]) = q[k+1], que equivale a q[k] = xˆ(k - 1) + y * q[k-1]
+
+Transformando a formula para algoritmo:
+
+inicio funcao quociente(x,y,k)
+
+	se k == 1:
+		entao returna 1
+	returna x^(k-1) + (y * quociente(x,y,k-1))
+
+fim funcao
+
+onde o comando "returna x^(k-1) + (y * quociente(x,y,k-1))" corresponde a formula "q[k] = xˆ(k - 1) + y * q[k-1]", 
+que é chamada recursivamente.
+
+b) Implemente este algoritmo e teste para vários valores de x, y, e k.
+
+def quociente(x,y,k):
+	if k == 1:
+		return 1
+	return x^(k-1) + (y * quociente(x,y,k-1))
+
+No programa teorema1.py primeiro é feito o caso base: q = (pow(x, 1) - pow(y, 1))/(x - y) = 1
+
+Depois o usuario da valores para x, y e k para ver que qualquer valor que ele escolher, o
+quociente será um valor inteiro, indicando a divisibilidade de (xˆk - yˆk) por (x - y)
+
+Por fim, o programa faz um loop de duração de 5 segundos onde são gerados varios valores aleatorios
+entre 1 e 100 para calcular quantas execucuções por segundo são feitas em média. Em um teste foram
+gerados estes valores:
+
+Execucoes: 57346
+Tempo: 5.00004292 segundos
+Execucoes por segundo: 11469.1016
+
+************* Exercicio 2 *************
+
+************* Exercicio 3 *************
+
+Teorema 3: Sabe-se construir 2^k − 1 rodadas de 2ˆ(k − 1) jogos onde cada equipe enfrenta uma
+equipe diferente em cada rodada.
+
+a) Apresente a prova por indução matemática no parâmetro k do Teorema 3
+
+O número de equipes é n = 2ˆk.
+O número de rodadas é r = 2ˆk-1.
+O número de jogos é j = 2ˆ(k-1). 
+
+Teorema do caso base: k = 1
+	n = 2ˆ1 = 2.
+	r = 2ˆ1 - 1 = 2 - 1 = 1.
+	j = 2ˆ(1 - 1) = 2ˆ0 = 1.
+	Ou seja, o caso base são duas equipes jogando uma rodada de um jogo.
+
+Teorema do passo indutivo:
+	Hipótese indutiva: assumimos que o teorema 3 é válido para um k qualquer.
+
+	Logo, se o teorema é válido para k, ele também é valido para k + 1.
+	Ou seja, n = 2ˆ(k+1),
+			 r = 2ˆ(k+1)-1.
+			 j = 2ˆ(k+1-1) = 2ˆk.
+
+	Dividimos as equipes em dois grupos, A e B, de 2ˆk cada.
+
+	Primeiramente, tratamos cada grupo como torneios diferentes e ao mesmo tempo.
+	Pela hipótese indutiva temos dois torneios, 2ˆk - 1 rodadas cada e
+	2ˆ(k-1) jogos.
+
+	Juntando os jogos dos grupos A e B, temos 2 * 2ˆ(k-1) = 2ˆk jogos por rodada,
+	em 2ˆk - 1 rodadas, uma vez que os jogos de A e B acontecem ao mesmo tempo.
+
+	Então agora sabemos que todas equipes de A e B jogaram contra todas as outras
+	equipes de seus respectivos grupos.
+
+	Para todas equipes de A enfrentar todas as equipes de B teremos mais 2ˆk rodadas
+	de 2ˆk jogos.
+
+	Vamos considerar o grupo A como uma fila e o grupo B como uma fila circular.
+
+	Desta forma a primeira equipe de A joga contra a primeira equipe de B, e depois
+	a primeira equipe de B passa a ser a última equipe de B. Sucessivamente, a primeira
+	equipe de A joga contra a segunda equipe de B (que passa a ser a última equipe de B),
+	e assim até que a primeira equipe de A tenha jogado contra todas as equipes de B. Agora
+	o processo vai se repetir para a segunda equipe de A, depois a terceira e em diante
+	até que todas as equipes de A tenham jogado (e fila estiver terminado).
+
+	Como visto anteriormente, teremos 2ˆk rodadas nesta parte.
+
+	Então, juntando as rodadas dos grupos A entre si, grupo B entre si e grupo A e B um 
+	contra o outro, temos: (2ˆk - 1) + 2ˆk = 2ˆ(k+1) - 1 rodadas de 2ˆ(k+1-1) = 2ˆk jogos.
+
+b) Apresente o algoritmo correspondente à prova do Teorema 3 apresentada e a sua respectiva
+implementação.
+
+c) Teste o algoritmo para valores de k. Qual o maior valor para o qual o seu algoritmo gera as
+rodadas?
+
+
+
