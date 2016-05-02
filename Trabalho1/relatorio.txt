@@ -121,7 +121,7 @@ implementação.
 				times recebe t
 				t++
 
-		se k == 1 #caso base
+		se k == 1 #fim da recursao
 			jogo recebe a dupla times[0] e times[1]
 			funcao retorna jogo
 
