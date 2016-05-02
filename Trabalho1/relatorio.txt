@@ -46,6 +46,17 @@ Execucoes por segundo: 11469.1016
 
 ************* Exercicio 2 *************
 
+a) Enuncie o teorema de que sabe-se enumerar todos estes números especificando seu parâmetro
+indutivo e prove-o por indução matemática (simples).
+
+b) Apresente o algoritmo resultante da sua prova, que enumera todos os m.(m−1).. . . . .(m−k+1)
+números (o que permite contá-los).
+
+c) Implemente este algoritmo e apresente os números inteiros (a sequência de dígitos, em especial
+para quando m é maior que nove) impressos para pequenos valores de m e k. Para valores
+maiores apresente o tempo de CPU e indique até que valores de m e k sua implementação (e
+computador) foi capaz de fazer a enumeração.
+
 ************* Exercicio 3 *************
 
 Teorema 3: Sabe-se construir 2^k − 1 rodadas de 2ˆ(k − 1) jogos onde cada equipe enfrenta uma
@@ -102,6 +113,27 @@ Teorema do passo indutivo:
 
 b) Apresente o algoritmo correspondente à prova do Teorema 3 apresentada e a sua respectiva
 implementação.
+
+	funcao rodadas(k, times)
+		se times é nulo
+			t = 1
+			então enquanto t <= 2ˆk
+				times recebe t
+				t++
+
+		se k == 1 #caso base
+			jogo recebe a dupla times[0] e times[1]
+			funcao retorna jogo
+
+		loop = 0
+		enquanto loop <= (2ˆk)/2
+			grupoA recebe times(loop)
+			loop++
+		enquanto loop <=2ˆk
+			grupoB recebe times(loop)
+			loop++
+
+		
 
 c) Teste o algoritmo para valores de k. Qual o maior valor para o qual o seu algoritmo gera as
 rodadas?
