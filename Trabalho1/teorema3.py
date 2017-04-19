@@ -29,24 +29,27 @@ if __name__ == '__main__':
     import sys
 
     TIME_MAX = 5
-    EXEC_MAX = 5
 
-    print("	Caso Base (k=1)")
-    resultado=geraTorneio(1)
-    printJogos(resultado)
-
-    print("	Passo Indutivo (k>1)")
+	
+	
+    print("	Digite um valor k > 1 fazer um teste: ")
     k = int(input(" k: "))
 
     start = time()
     execs = 0
-    while not (execs > EXEC_MAX and time() - start < TIME_MAX):
+	
+    while not (time() - start > TIME_MAX):
         execs += 1
-        resultado = geraTorneio(k)
+        resultado = geraTorneio(k, 1)
     end = time()
     tempoTotal = end - start
 
-    printJogos(resultado)
-    print (" Execuções: %d" % execs)
+    #printJogos(resultado)
+    print (" Execucoes: %d" % execs)
     print (" Tempo: %.3fs" % tempoTotal)
-    print (" Tempo por Execução: %.6fms" % (1000*tempoTotal/execs))
+    print (" Tempo por Execucao: %.6fms" % (1000*tempoTotal/execs))
+	#pTeste = 1
+	#print("	Digite 0 caso queira ver o resultado: ")
+    #pTeste = int(input("	Digite 0 caso queira ver o resultado: "))
+	#if pTeste == 0:
+	#	printJogos(resultado)
