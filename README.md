@@ -1,20 +1,20 @@
 # Estruturas Discretas
 
-####Autores:
+#### Autores:
 Lucas Hardman <br/>
 Stephanie Fay
 
-####Instituição:
+#### Instituição:
 Pontifícia Universidade Católica do Rio de Janeiro
 
-####Período:
-2016.1
+#### Período:
+2017.1
 
-####Professor:
+#### Professor:
 Marcus Poggi
 
-####Linguagem:
+#### Linguagem:
 Python
 
-####Descrição:
-Trabalhos de estruturas discretas.
+#### Descrição:
+Trabalhos da disciplina Estruturas Discretas. Consiste em provar teoremas, implementar e testar estas provas em Python.
