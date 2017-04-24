@@ -4,25 +4,34 @@ import sys
 TIME_MAX = 5
 
 #Função do algoritmo que estamos estudando
-def geraTorneio(k, start = 1):
+def geraTorneio(k, start = 1): # k = numero de rodadas e start = o nomero de jogos
     if k == 1:
-        return [[(start, start+1)]]
-    t1 = geraTorneio(k-1, start)
-    t2 = geraTorneio(k-1, 2**(k-1)+start)
-    t = []
+        return [[(start, start+1)]] # Retorna o par de times para a rodada 1 (caso base)
+    t1 = geraTorneio(k-1, start) #t1 = tabela com os jogos (par de times)
+    t2 = geraTorneio(k-1, 2**(k-1)+start) #t2 = tabela com os jogos na ordem inversa ao t1
+    t = [] #tabela com todos os jogos
+	
+	#Divide o os times em dois grupos A e B
     for i in range(len(t1)):
-        t.append(t1[i] + t2[i])
-    times1 = range(start, 2**(k-1)+start)
-    times2 = range(2**(k-1)+start, 2**(k)+start)
-    for z in range(len(times1)):
+        t.append(t1[i] + t2[i]) #Distribui t1 e t2 em uma tabela t
+    times1 = range(start, 2**(k-1)+start) #times1 = "Grupo A" de times
+    times2 = range(2**(k-1)+start, 2**(k)+start) #times2 = "Grupo B" de times
+	
+	#Inicia os jogos:
+	#Time 1 do grupo A joga contra Time 1 do grupo B
+	#Assim em diante ate acabarem os times
+	#Quando acabam os times, Time 1 do grupo A joga contra Time 2 do grupo B, e depois contra o Time 3 do grupo B e assim em diante
+	#Quando o time 1 do grupo A joga contra todos os times do grupo B, o mesmo se repete para todos os times do grupo A
+	#No codigo a seguir cuidamos do ciclo responsavel pela configuracao dos jogos discrita
+    for z in range(len(times1)): 
         round = []
-        for i in range(len(times1)):
-            index1 = i
-            index2 = (i + z) % len(times2)
-            game = (times1[index1], times2[index2])
+        for i in range(len(times1)): #Anda com o grupo A
+            index1 = i #Serve para andar com o grupo A (i anda normal)
+            index2 = (i + z) % len(times2) #Serve para andar o grupo B (faz o grupo B andar em ciclo)
+            game = (times1[index1], times2[index2]) #Passa o resultado para uma tabela
             round.append(game)
         t.append(round)
-    return t
+    return t #Retorna a tabela com todos os jogos
 
 #Função para printar os resultados da divisão dos jogos
 def printJogos(t):
