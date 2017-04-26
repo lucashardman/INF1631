@@ -59,7 +59,7 @@ while(time.time() - inicio < t):
 	if ((round(temp0)) != (round(temp))): #Bloco apenas para printar a contagem de 5 segundos
 		temp0 = round(temp)
 		temp2 = (round(temp)) - (round(inicio))
-		if ((6 - temp2) != 6):
+		if ((6 - temp2) != 6 and (6 - temp2) > 0):
 			print(" Faltam %d segundos..." % (6 - temp2))
 
 end = time.time()
