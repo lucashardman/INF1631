@@ -18,12 +18,10 @@ def read_file(file):
 			if flag1 == 0:
 				edge = x
 				vertice = y
-				graph = [[0 for w in range(edge)] for h in range(vertice)]
-				print(graph)
+				graph = [[0 for w in range(vertice)] for h in range(edge)]
 				flag1 = 1
 			else:
 				graph[x][y] += 1
-				
 			#print
         # Do Something with x and y
 		except IndexError:
@@ -71,11 +69,9 @@ def find_cycle(graph):
 graph = read_file(sys.argv)
 	
 print ("Finding Hamiltonian Paths----")
-
 a= find_paths(graph)
 print ("Number of Hamiltonian Paths=", len(a))
 print ("Finding Hamiltonian Cycles----")
 a= find_cycle(graph)
-
 print ("Number of Hamiltonian Cycles=", len(a))
 print ("done!")
