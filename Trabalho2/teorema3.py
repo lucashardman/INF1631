@@ -70,11 +70,11 @@ for x in range (0, len(args)):
 
 		if type == "c":
 			temp = []
+			print("case sensitive:")
 			for i in range (0, len(args[x][1][y])):
 				aux = list(args[x][1][y])
 				aux.pop(i)
-				aux = "".join(aux)
-				temp.append(aux)
+				temp.append("".join(aux))
 
 			for i in range (0, len(temp)):
 				aux = 0
@@ -86,77 +86,21 @@ for x in range (0, len(args)):
 
 				print("Foram achadas " + str(len(positions)) + " correspondências para " + temp[i])
 
-			args[x][0] = args[x][0].upper()
+			text = args[x][0].upper()
 			args[x][1][y] = args[x][1][y].upper()
 			temp = []
+			print("sem case sensitive:")
 			for i in range (0, len(args[x][1][y])):
 				aux = list(args[x][1][y])
 				aux.pop(i)
-				aux = "".join(aux)
-				temp.append(aux)
+				temp.append("".join(aux))
 
 			for i in range (0, len(temp)):
 				aux = 0
 				positions = []
-				while (args[x][0].find(temp[i], aux) > 0):
-					aux = args[x][0].find(temp[i], aux)
+				while (text.find(temp[i], aux) > 0):
+					aux = text.find(temp[i], aux)
 					positions.append(aux)
 					aux = aux + 1
 
 				print("Foram achadas " + str(len(positions)) + " correspondências para " + temp[i])
-
-
-"""print("\n\n")
-for x in range (0, len(args)):
-	print("Buscando na string: " + args[x][0] + "\n")
-	for y in range(0, len(args[x][1])):
-		print(">>> " + args[x][1][y])
-		positions = []
-		aux = 0
-
-		print("Buscando apenas por correspondências exatas (case sensitive)")
-		temp = args[x][0].split(" ")
-		for z in range (0, len(temp)):
-			if temp[z] == args[x][1][y]:
-				positions.append(z)
-
-		print("Foram achadas " + str(len(positions)) + " correspondências.")
-		print("\n")
-
-		positions = []
-		print("Buscando por qualquer tipo de correspondência (case sensitive)")
-		while (args[x][0].find(args[x][1][y], aux) > 0):
-			aux = args[x][0].find(args[x][1][y], aux)
-			positions.append(aux)
-			aux = aux + 1
-
-		print("Foram achadas " + str(len(positions)) + " correspondências.")
-		print("\n")
-
-		args[x][1][y] = args[x][1][y].upper()
-		
-
-	args[x][0] = args[x][0].upper()
-	for y in range (0, len(args[x][1])):
-		print(">>> " + args[x][1][y])
-		positions = []
-		aux = 0
-
-		print("Buscando apenas por correspondências exatas (sem case sensitive)")
-		temp = args[x][0].split(" ")
-		for z in range (0, len(temp)):
-			if temp[z] == args[x][1][y]:
-				positions.append(z)
-
-		print("Foram achadas " + str(len(positions)) + " correspondências.")
-		print("\n")
-
-		positions = []
-		print("Buscando por qualquer tipo de correspondência (sem case sensitive)")
-		while (args[x][0].find(args[x][1][y], aux) > 0):
-			aux = args[x][0].find(args[x][1][y], aux)
-			positions.append(aux)
-			aux = aux + 1
-
-		print("Foram achadas " + str(len(positions)) + " correspondências.")
-		print("\n")"""
