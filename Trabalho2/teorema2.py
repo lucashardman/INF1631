@@ -1,4 +1,4 @@
-def teo_3(costs, rewards, energy):
+def teorema_3(costs, rewards, energy):
   if energy < 0:
     raise ValueError("Invalid energy!!")
 
@@ -72,14 +72,14 @@ if __name__ == '__main__':
      while time() - start < TIME_THRESHOLD:
          execs += EXECS_PER_LOOP
          for i in range(EXECS_PER_LOOP):
-           solution = teo_3(problem['costs'], problem['rewards'], problem['energy'])
+           solution = teorema_3(problem['costs'], problem['rewards'], problem['energy'])
      end = time()
      elapsed = end - start
      print("num = %d" % n)
      print("time/exec = %.6f ms" % (1000*elapsed/execs))
   
   for problem in problems:
-    solution = teo_3(problem['costs'], problem['rewards'], problem['energy'])
+    solution = teorema_3(problem['costs'], problem['rewards'], problem['energy'])
     print solution[0]
     print solution[2]
     print q
