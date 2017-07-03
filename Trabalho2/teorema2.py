@@ -2,34 +2,34 @@ def teo_3(costs, rewards, energy):
   if energy < 0:
     raise ValueError("Invalid energy!!")
 
-  memo = {}
+  memory = {}
 
-  memo[(0, 0)] = (0, [0])
-  for v in range(1, 64):
-    memo[(v, 0)] = None
+  memory[(0, 0)] = (0, [0])
+  for y in range(1, 64):
+    memory[(y, 0)] = None
 
-  for q in range(1, energy+1):
-    for v in range(64):
-      custo_vizinho = q - costs[v]
-      vizinhos = find_neighbors(v)
-      if custo_vizinho < 0:
-        memo[(v, q)] = None
+  for x in range(1, energy+1):
+    for y in range(64):
+      nextCost = x - costs[y]
+      vizinhos = find_neighbors(y)
+      if nextCost < 0:
+        memory[(y, x)] = None
       else:
-        tuplas = [memo[(vizinho, custo_vizinho)] for vizinho in vizinhos if not memo[(vizinho, custo_vizinho)] == None]
+        tuplas = [memory[(vizinho, nextCost)] for vizinho in vizinhos if not memory[(vizinho, nextCost)] == None]
         if len(tuplas) > 0:
           melhor_vizinho = max(tuplas, key=lambda x: x[0])
-          novo_premio = melhor_vizinho[0] + rewards[v]
-          novo_caminho = melhor_vizinho[1][:] + [v]
-          memo[(v, q)] = (novo_premio, novo_caminho)
+          novo_premio = melhor_vizinho[0] + rewards[y]
+          novo_caminho = melhor_vizinho[1][:] + [y]
+          memory[(y, x)] = (novo_premio, novo_caminho)
         else:
-          memo[(v, q)] = None
+          memory[(y, x)] = None
 
   maior = 0
-  for q in range(energy, -1, -1):
-    x = memo[(0, q)]
+  for x in range(energy, -1, -1):
+    x = memory[(0, x)]
     if x != None and x[0] > maior:
       maior = x[0]
-      inst = x + (q,)
+      inst = x + (x,)
   return inst
 
 
@@ -66,6 +66,18 @@ if __name__ == '__main__':
 
       q = int(f.readline().strip())
 
+    for n, problem in enumerate(problems):
+     start = time()
+     execs = 0
+     while time() - start < TIME_THRESHOLD:
+         execs += EXECS_PER_LOOP
+         for i in range(EXECS_PER_LOOP):
+           solution = teo_3(problem['costs'], problem['rewards'], problem['energy'])
+     end = time()
+     elapsed = end - start
+     print("num = %d" % n)
+     print("time/exec = %.6f ms" % (1000*elapsed/execs))
+  
   for problem in problems:
     solution = teo_3(problem['costs'], problem['rewards'], problem['energy'])
     print solution[0]
