@@ -55,7 +55,7 @@ for x in range (0, len(args)):
 				positions.append(aux)
 				aux = aux + 1
 
-			print("Foram achadas " + str(len(positions)) + " correspondências.")
+			print("Foram achadas " + str(len(positions)) + " correspondencias.")
 		if type == "b":
 			args[x][0] = args[x][0].upper()
 			args[x][1][y] = args[x][1][y].upper()
@@ -66,7 +66,7 @@ for x in range (0, len(args)):
 				positions.append(aux)
 				aux = aux + 1
 
-			print("Foram achadas " + str(len(positions)) + " correspondências.")
+			print("Foram achadas " + str(len(positions)) + " correspondencias.")
 
 		if type == "c":
 			temp = []
@@ -84,7 +84,7 @@ for x in range (0, len(args)):
 					positions.append(aux)
 					aux = aux + 1
 
-				print("Foram achadas " + str(len(positions)) + " correspondências para " + temp[i])
+				print("Foram achadas " + str(len(positions)) + " correspondencias para " + temp[i])
 
 			text = args[x][0].upper()
 			args[x][1][y] = args[x][1][y].upper()
@@ -103,4 +103,4 @@ for x in range (0, len(args)):
 					positions.append(aux)
 					aux = aux + 1
 
-				print("Foram achadas " + str(len(positions)) + " correspondências para " + temp[i])
+				print("Foram achadas " + str(len(positions)) + " correspondencias para " + temp[i])
