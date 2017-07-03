@@ -2,7 +2,6 @@ import sys
 
 def read_file (file):
 	file_name = file[1]
-	print(file_name)
 
 	content = []
 	aux = ""
@@ -33,32 +32,33 @@ def read_file (file):
 
 
 args = read_file(sys.argv)
-print(args[0][1][0])
-
+print("\n\n")
 for x in range (0, len(args)):
 	print("Buscando na string: " + args[x][0] + "\n")
 	for y in range(0, len(args[x][1])):
-		print(">>> " + args[x][1][y] + "\n")
-
+		print(">>> " + args[x][1][y])
+		positions = []
 		aux = 0
 		while (args[x][0].find(args[x][1][y], aux) > 0):
 			aux = args[x][0].find(args[x][1][y], aux)
-			print(aux)
+			positions.append(aux)
 			aux = aux + 1
 
-		print("\nTotal de ocorrências: " + str(args[x][0].count(args[x][1][y])) + "\n")
+		print("Total de ocorrências: " + str(args[x][0].count(args[x][1][y])) + ", nas posições: ")
+		print(positions)
 		args[x][1][y] = args[x][1][y].upper()
 
-	print("-------------------------------------------")
-
 	args[x][0] = args[x][0].upper()
-	for x in range (0, len(args[x][1])):
-		print(">>> " + args[x][1][y] + "\n")
-
+	for y in range (0, len(args[x][1])):
+		print(">>> " + args[x][1][y])
 		aux = 0
+		positions = []
 		while (args[x][0].find(args[x][1][y], aux) > 0):
 			aux = args[x][0].find(args[x][1][y], aux)
-			print(aux)
+			positions.append(aux)
 			aux = aux + 1
 
-		print("\nTotal de ocorrências: " + str(args[x][0].count(args[x][1][y])) + "\n")
+		print("Total de ocorrências: " + str(args[x][0].count(args[x][1][y])) + ", nas posições: ")
+		print(positions)
+		args[x][1][y] = args[x][1][y].upper()
+	print("\n")
